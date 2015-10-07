@@ -1,0 +1,27 @@
+{
+  "name": "es6-usage-finder",
+  "version": "1.0.0",
+  "description": "Find usages of ES6 features",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ahmedshuhel/es6-usage-finder.git"
+  },
+  "keywords": [
+    "es6",
+    "find",
+    "refrence"
+  ],
+  "author": "Shuhel Ahmed <Shuhel Ahmed>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ahmedshuhel/es6-usage-finder/issues"
+  },
+  "homepage": "https://github.com/ahmedshuhel/es6-usage-finder#readme",
+  "dependencies": {
+    "globby": "^3.0.1"
+  }
+}
