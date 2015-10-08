@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/ahmedshuhel/es6-usage-finder#readme",
   "dependencies": {
+    "bluebird": "^2.10.2",
     "globby": "^3.0.1"
   }
 }
