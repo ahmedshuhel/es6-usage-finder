@@ -18,9 +18,14 @@ var patterns = {
   'Math.imul()': 'Math *\\. *imul *\\(.*\\)',
   'String.includes()': '\\. *includes *\\(.*\\)',
   'String.repeat()': '\\. *repeat *\\(.*\\)',
-  'Array.form()': 'Array *\\. *form *\\(.*\\)',
+  'Array.from()': 'Array *\\. *from *\\(.*\\)',
   'Array.of()': 'Array *\\. *of *\\(.*\\)',
   '[].fill()': '\\. *fill *\\(.*\\)',
+  '[].find()': '\\. *find *\\(.*\\)',
+  '[].findIndex()': '\\. *findIndex *\\(.*\\)',
+  '[].copyWithin()': '\\. *copyWithin *\\(.*\\)',
+  '[].keys()': '\\. *keys *\\(.*\\)',
+  '[].values()': '\\. *values *\\(.*\\)',
 };
 
 var searchArea = [
