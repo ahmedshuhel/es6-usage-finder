@@ -13,7 +13,12 @@ var patterns = {
 
   'Object.assign()': 'Object *\\. *assign *\\(.*\\)',
   'Object.setPrototypeOf()': 'Object *\\. *setPrototypeOf *\\(.*\\)',
+  'Object.is()': 'Object *\\. *is *\\(.*\\)',
   'Object.getOwnPropertySymbols()': 'Object *\\. *getOwnPropertySymbols *\\(.*\\)',
+
+  'Object.values()': 'Object *\\. *values *\\(.*\\)',
+  'Object.entries()': 'Object *\\. *entries *\\(.*\\)',
+  'Object.observe()': 'Object *\\. *observe *\\(.*\\)',
 
   'Number.isInteger()': 'Number *\\. *isInteger *\\(.*\\)',
   'Number.isFinite()': 'Number *\\. *isFinite *\\(.*\\)',
@@ -45,21 +50,43 @@ var patterns = {
   'Math.cbrt()': 'Math *\\. *cbrt *\\(.*\\)',
 
   'String.fromCodePoint()': 'String *\\. *fromCodePoint *\\(.*\\)',
-  'String.includes()': '\\. *includes *\\(.*\\)',
-  'String.repeat()': '\\. *repeat *\\(.*\\)',
+  'String.raw()': 'String *\\. *raw *\\(.*\\)',
+
+  'String.prototype.codePointAt()': '\\. *codePointAt *\\(.*\\)',
+  'String.prototype.includes()': '\\. *includes *\\(.*\\)',
+  'String.prototype.repeat()': '\\. *repeat *\\(.*\\)',
+  'String.prototype.normalize()': '\\. *normalize *\\(.*\\)',
+  'String.prototype.startsWith()': '\\. *startsWith *\\(.*\\)',
+  'String.prototype.endsWith()': '\\. *endsWith *\\(.*\\)',
+  'String.prototype.trimLeft()': '\\. *trimLeft *\\(.*\\)',
+  'String.prototype.trimRight()': '\\. *trimRight *\\(.*\\)',
+
+  'String.prototype.padLeft()': '\\. *padLeft *\\(.*\\)',
+  'String.prototype.padRight()': '\\. *padRight *\\(.*\\)',
 
   'Array.from()': 'Array *\\. *from *\\(.*\\)',
   'Array.observe()': 'Array *\\. *observe *\\(.*\\)',
   'Array.of()': 'Array *\\. *of *\\(.*\\)',
-  '[].fill()': '\\. *fill *\\(.*\\)',
-  '[].entries()': '\\. *entries *\\(.*\\)',
-  '[].find()': '\\. *find *\\(.*\\)',
-  '[].findIndex()': '\\. *findIndex *\\(.*\\)',
-  '[].copyWithin()': '\\. *copyWithin *\\(.*\\)',
-  '[].keys()': '\\. *keys *\\(.*\\)',
-  '[].values()': '\\. *values *\\(.*\\)',
-  '[].startsWith()': '\\. *startsWith *\\(.*\\)',
-  '[].endsWith()': '\\. *endsWith *\\(.*\\)',
+  'Array.prototype.fill()': '\\. *fill *\\(.*\\)',
+  'Array.prototype.entries()': '\\. *entries *\\(.*\\)',
+  'Array.prototype.find()': '\\. *find *\\(.*\\)',
+  'Array.prototype.findIndex()': '\\. *findIndex *\\(.*\\)',
+  'Array.prototype.copyWithin()': '\\. *copyWithin *\\(.*\\)',
+  'Array.prototype.keys()': '\\. *keys *\\(.*\\)',
+  'Array.prototype.values()': '\\. *values *\\(.*\\)',
+
+  'ArrayBuffer': 'ArrayBuffer',
+  'DataView': 'DataView',
+  'Int8Array': 'Int8Array',
+  'Uint8Array': 'Uint8Array',
+  'Uint8ClampedArray': 'Uint8ClampedArray',
+  'Int16Array': 'Int16Array',
+  'Uint16Array': 'Uint16Array',
+  'Int32Array': 'Int32Array',
+  'Uint32Array': 'Uint32Array',
+  'Float32Array': 'Float32Array',
+  'Float64Array': 'Float64Array',
+
 };
 
 var searchArea = [
