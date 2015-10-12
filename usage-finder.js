@@ -65,7 +65,6 @@ var patterns = {
 var searchArea = [
   './src/**/*.js',
   './test/**/*.js',
-  '!./src/usage-finder.js',
 ];
 
 function scanDirectory(basePath, dir){
