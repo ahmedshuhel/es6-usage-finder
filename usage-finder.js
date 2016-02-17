@@ -15,6 +15,7 @@ var patterns = {
   'Object.setPrototypeOf()': 'Object *\\. *setPrototypeOf *\\(.*\\)',
   'Object.is()': 'Object *\\. *is *\\(.*\\)',
   'Object.getOwnPropertySymbols()': 'Object *\\. *getOwnPropertySymbols *\\(.*\\)',
+  'Object.getOwnPropertyDescriptors()': 'Object *\\. *getOwnPropertyDescriptors *\\(.*\\)',
 
   'Object.values()': 'Object *\\. *values *\\(.*\\)',
   'Object.entries()': 'Object *\\. *entries *\\(.*\\)',
@@ -58,11 +59,15 @@ var patterns = {
   'String.prototype.normalize()': '\\. *normalize *\\(.*\\)',
   'String.prototype.startsWith()': '\\. *startsWith *\\(.*\\)',
   'String.prototype.endsWith()': '\\. *endsWith *\\(.*\\)',
-  'String.prototype.trimLeft()': '\\. *trimLeft *\\(.*\\)',
-  'String.prototype.trimRight()': '\\. *trimRight *\\(.*\\)',
 
-  'String.prototype.padLeft()': '\\. *padLeft *\\(.*\\)',
-  'String.prototype.padRight()': '\\. *padRight *\\(.*\\)',
+  'String.prototype.trimLeft() Alias': '\\. *trimLeft *\\(.*\\)',
+  'String.prototype.trimRight() Alias': '\\. *trimRight *\\(.*\\)',
+
+  'String.prototype.trimStart()': '\\. *trimStart *\\(.*\\)',
+  'String.prototype.trimEnd()': '\\. *trimEnd *\\(.*\\)',
+
+  'String.prototype.padStart()': '\\. *padStart *\\(.*\\)',
+  'String.prototype.padEnd()': '\\. *padEnd *\\(.*\\)',
 
   'Array.from()': 'Array *\\. *from *\\(.*\\)',
   'Array.observe()': 'Array *\\. *observe *\\(.*\\)',
@@ -74,7 +79,9 @@ var patterns = {
   'Array.prototype.copyWithin()': '\\. *copyWithin *\\(.*\\)',
   'Array.prototype.keys()': '\\. *keys *\\(.*\\)',
   'Array.prototype.values()': '\\. *values *\\(.*\\)',
-
+  'Array.prototype.includes()': '\\. *includes *\\(.*\\)',
+  'Exponentiation Operator (**)': '[_a-zA-Z]\\w*\\s+\\*\\*\\s+[_a-zA-Z]\\w*|\\d+\\s+\\*\\*\\s+\\d+|[_a-zA-Z]\\w*\\s+\\*\\*=\\s*\\d+|[_a-zA-Z]\\w*\\s+\\*\\*=\\s*[_a-zA-Z]\\w*',
+  'async & await':'\\s*async\\s+function\\s+[_a-zA-Z][_a-zA-Z0-9]*\\(.*?\\)|\\s+async\\s+\\(.*?\\)\\s+=>|\\s+await\\s+[_a-zA-Z][_a-zA-Z0-9]*\\(.*\\)|\\(\\s*async\\s+function\\s*\\(.*\\)\\s*\\{[\\s\\S]*?\\}\\s*\\)\\(.*?\\)',
   'ArrayBuffer': 'ArrayBuffer',
   'DataView': 'DataView',
   'Int8Array': 'Int8Array',
@@ -86,7 +93,6 @@ var patterns = {
   'Uint32Array': 'Uint32Array',
   'Float32Array': 'Float32Array',
   'Float64Array': 'Float64Array',
-
 };
 
 var searchArea = [
@@ -101,19 +107,18 @@ function scanDirectory(basePath, dir){
 
   var stream = gs.create(searchArea, opt);
   stream.on('data', (file) => {
-    searchFile(file.path);
+    searchFile(file.path, basePath);
   });
 }
 
-function searchFile(filePath) {
+function searchFile(filePath, basePath) {
   var src = fs.readFileSync(filePath, 'utf-8');
   Object.keys(patterns).forEach(p => {
     var res, msg;
     var rx = new RegExp(patterns[p], 'g');
 
     while ((res = rx.exec(src)) !== null) {
-      msg = `Found '${res[0]}' at line: ${getLineFromPos(src, rx.lastIndex)} in '${path.resolve(filePath)}'`;
-      console.log(msg);
+      console.log(`Found '${res[0]}' at line: ${getLineFromPos(src, rx.lastIndex)} in '${path.relative(basePath, filePath)}'`);
     }
   });
 }
